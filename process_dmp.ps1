@@ -2,6 +2,7 @@
 finds  all *.dmp file  under $basdir  ( recursive) and  runs !analyze  against  each
 out  put  goes  to same dir as  dump  as  dumpname.log
 usage:  scan-dumps -basedir  "c:\dumps"
+asumes  _NT_SYMBOL_PATH  is properly set up and kd.exe  is in %path%
 #>
 
 
