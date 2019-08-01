@@ -8,6 +8,16 @@ asumes  _NT_SYMBOL_PATH  is properly set up and kd.exe  is in %path%
 
 function scan-dumps{ param( [string]$basedir)
 
+	if ((Get-Command "kd.exe" -ErrorAction SilentlyContinue) -eq $null) 
+	{ 
+	   Write-Host "Unable to find kd.exe in your PATH"
+	   return
+	}
+	
+	if (!(test-path -Path Env:\_NT_SYMBOL_PATH)){
+	Write-Host "_NT_SYMBOL_PATH  not defined "
+	return
+	}
 
 $dumplist = get-childitem -Recurse $basedir  -Include *.dmp
 
